@@ -4,8 +4,10 @@ git clone https://github.com/reo7sp/tgbot-cpp
 cd tgbot-cpp
 cmake .
 make -j4
+echo "---------------first"
 ls
 mv libTgBot.a ../
+echo "---------------second"
 cd ..
 ls
 cmake .
