@@ -1,1 +1,1 @@
-web: ./echobot
+web: bash run.sh
