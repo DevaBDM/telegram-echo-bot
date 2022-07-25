@@ -1,1 +1,1 @@
-worker: ./echobot
+web: ./echobot
