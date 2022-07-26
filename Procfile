@@ -1,1 +1,1 @@
-web: node start
+run: bash run.sh
