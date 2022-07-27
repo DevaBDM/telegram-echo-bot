@@ -1,1 +1,1 @@
-web: ./echobot
+web: ./binary
