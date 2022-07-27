@@ -12,7 +12,7 @@ using namespace TgBot;
 int main() {
     string token("5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
     printf("Token: %s\n", token.c_str());
-    string webhookUrl("https://cpp-echo-bot.herokuapp.com/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
+    string webhookUrl("https://enigmatic-hollows-40947.herokuapp.com/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
     printf("Webhook url: %s\n", webhookUrl.c_str());
 
     Bot bot(token);
