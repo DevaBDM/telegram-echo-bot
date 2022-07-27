@@ -35,7 +35,7 @@ int main() {
     try {
         printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
 
-        TgWebhookTcpServer webhookServer(433, bot);
+        TgWebhookTcpServer webhookServer(443, bot);
 
         printf("Server starting\n");
         bot.getApi().setWebhook(webhookUrl);
