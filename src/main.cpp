@@ -12,6 +12,8 @@ using namespace TgBot;
 int main() {
     string token("5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
     printf("Token: %s\n", token.c_str());
+    string webhookUrl("https://cpp-echo-bot.herokuapp.com/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
+    printf("Webhook url: %s\n", webhookUrl.c_str());
 
     Bot bot(token);
     bot.getEvents().onCommand("start", [&bot](Message::Ptr message) {
@@ -32,13 +34,12 @@ int main() {
 
     try {
         printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
-        bot.getApi().deleteWebhook();
 
-        TgLongPoll longPoll(bot);
-        while (true) {
-            printf("Long poll started\n");
-            longPoll.start();
-        }
+        TgWebhookTcpServer webhookServer(3000, bot);
+
+        printf("Server starting\n");
+        bot.getApi().setWebhook(webhookUrl);
+        webhookServer.start();
     } catch (exception& e) {
         printf("error: %s\n", e.what());
     }
