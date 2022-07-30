@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <exception>
+#include <iostream>
 #include <string>
 
 #include <tgbot/tgbot.h>
@@ -10,12 +11,16 @@ using namespace std;
 using namespace TgBot;
 
 int main() {
-    string token("5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
-    printf("Token: %s\n", token.c_str());
-    string webhookUrl(std::getenv("APP_URL") + "5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
-    printf("Webhook url: %s\n", webhookUrl.c_str());
+    string token(std::getenv("TOKEN"));
+    std::string app_url(std::getenv("APP_URL"));
     std::string port_s{std::getenv("PORT")};
     unsigned short port_i{static_cast<unsigned short>(std::stoi(port_s))};
+
+    printf("Token: %s\n", token.c_str());
+    std::cout << "Port: " << port_i << std::endl;
+
+    string webhookUrl(app_url + token);
+    printf("Webhook url: %s\n", webhookUrl.c_str());
 
     Bot bot(token);
     bot.getEvents().onCommand("start", [&bot](Message::Ptr message) {
