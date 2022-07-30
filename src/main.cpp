@@ -14,6 +14,8 @@ int main() {
     printf("Token: %s\n", token.c_str());
     string webhookUrl("https://cpp-echo-bot.herokuapp.com/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8");
     printf("Webhook url: %s\n", webhookUrl.c_str());
+    std::string port_s{std::getenv("PORT")};
+    unsigned short port_i{static_cast<unsigned short>(std::stoi(port_s))};
 
     Bot bot(token);
     bot.getEvents().onCommand("start", [&bot](Message::Ptr message) {
@@ -35,7 +37,7 @@ int main() {
     try {
         printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
 
-        TgWebhookTcpServer webhookServer(443, bot);
+        TgWebhookTcpServer webhookServer(port_i, bot);
 
         printf("Server starting\n");
         bot.getApi().setWebhook(webhookUrl);
