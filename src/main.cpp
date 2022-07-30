@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <exception>
 #include <string>
+#include <iostream>
 
 #include <tgbot/tgbot.h>
 
