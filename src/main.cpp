@@ -21,7 +21,7 @@ int main() {
 
     Bot bot(token);
     bot.getEvents().onCommand("start", [&bot](Message::Ptr message) {
-        bot.getApi().sendMessage(message->chat->id, "Hi!");
+        bot.getApi().sendMessage(message->chat->id, "Bye!");
     });
     bot.getEvents().onAnyMessage([&bot](Message::Ptr message) {
         printf("User wrote %s\n", message->text.c_str());
