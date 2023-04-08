@@ -15,7 +15,7 @@ const options = {
   }
 };
 
-const url = process.env.APP_URL ||'https://telegram-bot-echo-cpp-production.up.railway.app/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8';
+const url = process.env.APP_URL ||'https://telegram-echo-bot-production.up.railway.app/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8';
 const bot = new TelegramBot(token, options);
 
 // Matches "/echo [whatever]"
