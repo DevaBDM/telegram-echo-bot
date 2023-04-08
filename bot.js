@@ -4,7 +4,19 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = '5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8';
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
+const options = {
+  webHook: {
+    // Port to which you should bind is assigned to $PORT variable
+    // See: https://devcenter.heroku.com/articles/dynos#local-environment-variables
+    port: process.env.PORT
+    // you do NOT need to set up certificates since Heroku provides
+    // the SSL certs already (https://<app-name>.herokuapp.com)
+    // Also no need to pass IP because on Heroku you need to bind to 0.0.0.0
+  }
+};
+
+const url = process.env.APP_URL ||'https://telegram-bot-echo-cpp-production.up.railway.app/5458048718:AAFQJak19F5-XUMDNrHkJql5TvGOFW-XCR8';
+const bot = new TelegramBot(token, options);
 
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
@@ -18,6 +30,9 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   // send back the matched "whatever" to the chat
   bot.sendMessage(chatId, resp);
 });
+
+
+bot.setWebHook(`${url}/bot${token}`);
 
 // Listen for any kind of message. There are different kinds of
 // messages.
